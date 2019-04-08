@@ -17,11 +17,6 @@ class ProductController extends AbstractController
      */
     public function create(Request $request)
     {
-        $repository = $this->getDoctrine()->getRepository(Product::class);
-        $products = $repository->findAll();
-
-        dump($products);
-
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
 
