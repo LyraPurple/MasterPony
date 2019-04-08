@@ -5,6 +5,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         {% endblock %}
     </head>
@@ -12,6 +13,18 @@
         {{ include('_navbar.html.twig') }}
 
         <div class="container my-5">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="mt-4 alert alert-{{ label }} alert-dismissible fade show">
+                        {{ message }}
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
             {% block body %}{% endblock %}
         </div>
 
