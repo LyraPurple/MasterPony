@@ -50,11 +50,11 @@ class ProductController extends AbstractController
             throw $this->createNotFoundException( /* On n'utilise pas :  return $this->createNotFoundException Car comme on relève une exception, alors c'ay throw. */
                 'Le produit '.$id.' n\'existe pas'
             );
-        }
+    }
 
-        return $this->render('product/show.html.twig', [
-            'product' => $product
-        ]);
+    return $this->render('product/show.html.twig', [
+        'product' => $product
+    ]);
     }
 
     /**
