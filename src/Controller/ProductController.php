@@ -14,7 +14,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/create", name="product_create")
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response /* Pas mettre le chemin \Symfony\Component\HttpFoundation\ */
      */
     public function create(Request $request)
     {
@@ -59,4 +59,20 @@ class ProductController extends AbstractController
             'product' => $product
         ]);
     }
+    /**
+     * Créer la route /product où on affichera tous les produits de la base de données.
+     * On utilisera les cards de Bootstrap.
+     *
+     * @Route("/product", name="product_list")
+     * @param ProductRepository $repository
+     * @return Response
+     */
+    public function list(ProductRepository $repository)
+    {
+        $products = $repository->findAll();
+        return $this->render('product/list.html.twig', [
+           'products' => $products
+        ]);
+    }
+
 }
