@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Product;
+use App\Entity\User;
 use Cocur\Slugify\SlugifyInterface;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -24,6 +25,17 @@ class AppFixtures extends Fixture
     {
         $faker = Factory::create('fr_FR');
 
+        // Création des users
+        // On créé les users avant les produits car les produits ont besoin de user pour exister.
+        $users = []; // Le tableau nous aide à retrouver les utilisateurs
+        for ($i = 1; $i <= 10; $i++) {
+            $user = new User();
+            $user->setUsername($faker->userName);
+            $manager->persist($user);
+            $users[$i] = $user;
+        }
+
+        // Création des produits
         for ($i = 1; $i <= 100; $i++) {
             $product = new Product();
             $product->setName($faker->randomElement([
@@ -35,6 +47,7 @@ class AppFixtures extends Fixture
             // $this->slugify->slugify('iPhone X'); // iphone-x
             $slug = $this->slugify->slugify($product->getName());
             $product->setSlug($slug);
+            $product->setUser($users[rand(1, 10)]);
             $manager->persist($product);
         }
 
