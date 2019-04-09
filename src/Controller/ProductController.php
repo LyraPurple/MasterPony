@@ -50,13 +50,6 @@ class ProductController extends AbstractController
      */
     public function show(Product $product)
     {
-        // Et on ajoute par rapport à la surcharge pour le SEO de (show.html.twig) :
-        if (!$product) {
-            throw $this->createNotFoundException( /* On n'utilise pas :  return $this->createNotFoundException Car comme on relève une exception, alors c'ay throw. */
-                'Le produit '.$id.' n\'existe pas'
-            );
-        }
-
         return $this->render('product/show.html.twig', [
             'product' => $product
         ]);

@@ -7,10 +7,13 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbar">
+        {# Récupère la route (pour pouvoir savoir de quel URL vient l'utilisateur) #}
+        {% set route = app.request.attributes.get('_route') %}
+
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Accueil</a>
-                </li>
+                <li class="nav-item {{ path()}}">
+                    <a class="nav-link" href="{{ path('home') }}">Accueil</a>
+            </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Nos produits</a>
                 </li>
