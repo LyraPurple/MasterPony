@@ -46,7 +46,6 @@ class AppFixtures extends Fixture
             // $this->slugify->slugify('iPhone X'); // iphone-x
             $slug = $this->slugify->slugify($product->getName());
             $product->setSlug($slug);
-            // Très important, c'est grâce à cette ligne que le produit est lié au vendeur.
             $product->setUser($users[rand(1, 10)]);
             $manager->persist($product);
         }

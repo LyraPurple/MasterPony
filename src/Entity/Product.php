@@ -42,9 +42,6 @@ class Product
      */
     private $slug;
 
-
-    // Il est préférable de préciser inversedBy sur le ManyToOne
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="products")
      * @ORM\JoinColumn(nullable=false)

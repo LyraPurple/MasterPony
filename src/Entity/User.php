@@ -23,9 +23,6 @@ class User
      */
     private $username;
 
-
-    // OneToMany est obligatoirement accompagné par  mappedBy="..."
-
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="user")
      */
