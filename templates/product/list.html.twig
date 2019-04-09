@@ -15,8 +15,7 @@
                     <div class="card-body">
                         <h3 class="card-title">{{ product.name }}</h3>
                         <h5>{{ product.price / 100 }} &euro;</h5>
-                        <p>Produit vendu par {{ product.user.username }}</p>
-                        {# Revient à écrire: $product->getUser()->getUsername(); #}
+                        <p>Produit vendu par <a href="{{ path('user_show', {'username': product.user.username}) }}">{{ product.user.username }}</a></p>
                     </div>
                     <div class="card-footer">
                         <a href="{{ path('product_show', {'id': product.id}) }}" class="btn btn-primary btn-block">Voir le produit</a>

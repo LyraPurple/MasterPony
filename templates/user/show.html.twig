@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ user.username }} vend ces produits :</h1>
+
+    {% for product in user.products %}
+        <h2>{{ product.name }}</h2>
+    {% endfor %}
+{% endblock %}

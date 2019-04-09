@@ -26,7 +26,6 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
 
         // Création des users
-        // On créé les users avant les produits car les produits ont besoin de user pour exister.
         $users = []; // Le tableau nous aide à retrouver les utilisateurs
         for ($i = 1; $i <= 10; $i++) {
             $user = new User();
@@ -47,6 +46,7 @@ class AppFixtures extends Fixture
             // $this->slugify->slugify('iPhone X'); // iphone-x
             $slug = $this->slugify->slugify($product->getName());
             $product->setSlug($slug);
+            // Très important, c'est grâce à cette ligne que le produit est lié au vendeur.
             $product->setUser($users[rand(1, 10)]);
             $manager->persist($product);
         }
